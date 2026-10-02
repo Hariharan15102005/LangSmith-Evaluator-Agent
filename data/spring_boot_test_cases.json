@@ -1,0 +1,132 @@
+[
+  {
+    "id": "TC-001",
+    "topic": "Spring Boot Fundamentals",
+    "difficulty": "Easy",
+    "question": "What is Spring Boot?",
+    "reference_answer": "Spring Boot is a Java-based framework built on top of the Spring Framework that simplifies the development of standalone, production-ready applications. It provides features such as auto-configuration, starter dependencies, and embedded servers to reduce manual configuration and simplify deployment.",
+    "sample_answers": {
+      "correct": "Spring Boot is an open-source Java framework built on top of the Spring Framework that simplifies creating production-grade, standalone applications. It eliminates boilerplate configuration using auto-configuration, starter dependencies, and embedded web servers.",
+      "partial": "Spring Boot is a Java framework that provides embedded servers and starter dependencies, but it requires full XML configuration to run.",
+      "incorrect": "Spring Boot is a JavaScript compiler used exclusively for frontend styling in React applications.",
+      "irrelevant": "The Eiffel Tower was constructed between 1887 and 1889 in Paris, France, as the centerpiece of the 1889 World's Fair."
+    }
+  },
+  {
+    "id": "TC-002",
+    "topic": "Annotations",
+    "difficulty": "Easy",
+    "question": "What is the purpose of the @SpringBootApplication annotation?",
+    "reference_answer": "@SpringBootApplication is a convenience annotation that combines @SpringBootConfiguration, @EnableAutoConfiguration, and @ComponentScan. It marks the main configuration class, enables Spring Boot's auto-configuration, and allows component scanning from the package containing the class and its subpackages by default.",
+    "sample_answers": {
+      "correct": "@SpringBootApplication is a composite annotation bundling @SpringBootConfiguration, @EnableAutoConfiguration, and @ComponentScan. It specifies the primary configuration class, activates auto-configuration, and initiates component scanning for beans in the application package.",
+      "partial": "@SpringBootApplication enables auto-configuration and component scanning, but it cannot be used on configuration classes.",
+      "incorrect": "@SpringBootApplication is used exclusively to configure MongoDB replica sets.",
+      "irrelevant": "Photosynthesis is the biological process by which green plants use sunlight to synthesize nutrients from carbon dioxide and water."
+    }
+  },
+  {
+    "id": "TC-003",
+    "topic": "Starters & Dependency Management",
+    "difficulty": "Easy",
+    "question": "What are Spring Boot Starter dependencies?",
+    "reference_answer": "Spring Boot Starters are convenient dependency descriptors that group commonly used libraries for a particular purpose. For example, spring-boot-starter-web brings in dependencies commonly needed to build web applications, including Spring MVC and an embedded web server. Starters simplify dependency management by avoiding the need to add each library individually.",
+    "sample_answers": {
+      "correct": "Spring Boot Starters are curated sets of dependency descriptors that aggregate related libraries into a single dependency, such as spring-boot-starter-web. They streamline build configuration and version management.",
+      "partial": "Starters are dependencies in Spring Boot, but each underlying library jar must still be manually imported into pom.xml.",
+      "incorrect": "Starters are shell scripts that start Apache Kafka clusters in Docker.",
+      "irrelevant": "The Great Barrier Reef is the world's largest coral reef system composed of over 2,900 individual reefs."
+    }
+  },
+  {
+    "id": "TC-004",
+    "topic": "Auto-Configuration",
+    "difficulty": "Easy",
+    "question": "What is Spring Boot auto-configuration?",
+    "reference_answer": "Auto-configuration allows Spring Boot to configure application components automatically based on the libraries available on the classpath, existing beans, and configuration properties. It reduces manual setup while allowing developers to override or customize the configuration when necessary.",
+    "sample_answers": {
+      "correct": "Auto-configuration intelligently sets up Spring application beans based on classpath dependencies, properties, and existing user beans, eliminating repetitive manual configuration while remaining customizable.",
+      "partial": "Auto-configuration configures application beans, but once configured, developers cannot override them.",
+      "incorrect": "Auto-configuration is a hardware feature that increases CPU clock speed when running Java.",
+      "irrelevant": "Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas."
+    }
+  },
+  {
+    "id": "TC-005",
+    "topic": "Embedded Servers",
+    "difficulty": "Easy",
+    "question": "What is an embedded server in Spring Boot?",
+    "reference_answer": "An embedded server is a web server packaged with the application so that the application can start and serve HTTP requests without requiring a separately installed and configured server. Spring Boot supports embedded servers such as Tomcat, Jetty, and Undertow, depending on the application dependencies and configuration.",
+    "sample_answers": {
+      "correct": "An embedded server is a servlet container (such as Tomcat, Jetty, or Undertow) packaged directly inside the executable application JAR, allowing the app to run standalone without external server installation.",
+      "partial": "An embedded server runs inside the application, but it only supports static HTML files and cannot process REST requests.",
+      "incorrect": "An embedded server is a physical hardware server placed inside a corporate data center.",
+      "irrelevant": "The Pacific Ocean is the largest and deepest of Earth's five oceanic divisions."
+    }
+  },
+  {
+    "id": "TC-006",
+    "topic": "Advanced Auto-Configuration & Conditions",
+    "difficulty": "Very Complex",
+    "question": "Explain how Spring Boot auto-configuration works, including the role of conditional annotations and how developers can override an automatically configured bean.",
+    "reference_answer": "Spring Boot auto-configuration attempts to configure application components based on the application's classpath, existing beans, and configuration properties. Auto-configuration classes are registered through Spring Boot's auto-configuration mechanism. Conditional annotations such as @ConditionalOnClass, @ConditionalOnMissingBean, and @ConditionalOnProperty determine whether particular configurations or beans should be applied.\n\nFor example, @ConditionalOnClass can activate configuration when a required class is available, while @ConditionalOnMissingBean allows a default bean to be created only when a suitable bean has not already been provided. Developers can customize behavior by defining their own bean, changing configuration properties, or excluding a specific auto-configuration class when appropriate. The exact conditions depend on the configuration being applied.",
+    "sample_answers": {
+      "correct": "Spring Boot auto-configuration registers auto-configuration classes that evaluate conditional annotations like @ConditionalOnClass, @ConditionalOnMissingBean, and @ConditionalOnProperty against the classpath and environment. When developers declare their own @Bean or set custom properties, annotations like @ConditionalOnMissingBean back off, allowing user-defined beans to cleanly override default auto-configured components.",
+      "partial": "Auto-configuration creates beans using conditional annotations such as @ConditionalOnClass, but it does not support overriding beans via user-defined definitions.",
+      "incorrect": "Auto-configuration converts Java code into C++ binaries during compilation and cannot be customized.",
+      "irrelevant": "Quantum entanglement is a phenomenon in physics where entangled particles remain connected so that actions performed on one affect the other."
+    }
+  },
+  {
+    "id": "TC-007",
+    "topic": "IoC Container & Bean Lifecycle",
+    "difficulty": "Very Complex",
+    "question": "Explain how Spring Boot manages dependency injection and bean creation. Include component scanning, @Bean, bean scopes, and the role of the ApplicationContext.",
+    "reference_answer": "Spring Boot uses the Spring IoC container to create, configure, and manage application objects called beans. The ApplicationContext is the central container that holds bean definitions and provides access to managed beans.\n\nComponent scanning detects classes annotated with stereotypes such as @Component, @Service, @Repository, and @Controller. Configuration classes can also declare beans explicitly using @Bean methods. Dependency injection supplies required dependencies to these beans, preferably through constructor injection.\n\nThe default bean scope is singleton, meaning one instance per bean definition per Spring IoC container. Other scopes include prototype and, in web applications, request and session. Bean creation and initialization follow the Spring container's lifecycle, which can include dependency resolution, initialization callbacks, and destruction callbacks where applicable.",
+    "sample_answers": {
+      "correct": "Spring Boot manages bean lifecycle through the ApplicationContext, which acts as the IoC container. Beans are registered via component scanning (@Component, @Service, @Repository, @Controller) or explicitly in @Configuration classes via @Bean methods. Dependencies are resolved and injected (ideally via constructor injection). By default, beans are singletons, with prototype, request, and session scopes available.",
+      "partial": "Spring Boot manages beans via ApplicationContext and component scanning, but all beans must be prototypes and constructor injection is unsupported.",
+      "incorrect": "Dependency injection in Spring Boot requires compiling bytecode with a C++ linker and does not use ApplicationContext.",
+      "irrelevant": "The Renaissance was a fervent period of European cultural, artistic, political and economic rebirth following the Middle Ages."
+    }
+  },
+  {
+    "id": "TC-008",
+    "topic": "Externalized Configuration & Profiles",
+    "difficulty": "Very Complex",
+    "question": "A Spring Boot application has different database settings for development and production. Explain how externalized configuration and profiles can manage these environments, including property precedence.",
+    "reference_answer": "Spring Boot supports externalized configuration through sources such as application.properties, application.yml, environment variables, command-line arguments, and other supported property sources. Profiles allow environment-specific configuration, commonly through files such as application-dev.properties and application-prod.properties.\n\nA profile can be activated using configuration such as spring.profiles.active, including through environment variables or command-line arguments. Profile-specific settings are then applied alongside the application's other configuration sources.\n\nWhen multiple sources define the same property, Spring Boot resolves the value according to its property-source precedence rules. Higher-precedence sources override lower-precedence ones; command-line arguments and environment variables commonly override values from application configuration files. The precise ordering depends on the configuration mechanism and Spring Boot version. Sensitive production credentials should be supplied through secure configuration mechanisms rather than committed to source control.",
+    "sample_answers": {
+      "correct": "Spring Boot manages multi-environment database configs using profiles (e.g. application-dev.properties and application-prod.properties), activated via spring.profiles.active. Property resolution follows strict precedence rules: command-line arguments and environment variables override application.properties and profile files, allowing secure externalized configuration for production.",
+      "partial": "Spring Boot supports application-dev.properties and application-prod.properties, but environment variables cannot override values defined in property files.",
+      "incorrect": "Spring Boot requires hardcoding all development and production passwords directly in Java controller source code.",
+      "irrelevant": "The speed of light in vacuum is exactly 299,792,458 meters per second."
+    }
+  },
+  {
+    "id": "TC-009",
+    "topic": "REST Architecture & DispatcherServlet",
+    "difficulty": "Very Complex",
+    "question": "Explain how a Spring Boot REST API processes an HTTP request, from receiving the request to returning a JSON response. Include the roles of the controller, service, repository, and exception handling.",
+    "reference_answer": "In a typical Spring Boot REST application using Spring MVC, an HTTP request is received by the embedded web server and passed to the servlet infrastructure. The DispatcherServlet acts as the front controller and routes the request to the appropriate handler, commonly a method in a class annotated with @RestController.\n\nThe controller handles the HTTP layer, validates or delegates input as needed, and calls a service containing the application's business logic. The service may interact with a repository, often implemented using Spring Data, to access the database.\n\nThe result is returned through the controller. With @RestController, the return value is generally serialized into the response body using an appropriate message converter, commonly Jackson for JSON when configured. Exception handling can be centralized using @ControllerAdvice and @ExceptionHandler, allowing exceptions to be translated into suitable HTTP status codes and structured error responses. The exact flow depends on the application's configuration and libraries.",
+    "sample_answers": {
+      "correct": "The HTTP request arrives at the embedded server and is handled by DispatcherServlet (front controller), which routes it to a @RestController. The controller delegates to a Service for business logic, which queries a Spring Data Repository. The returned domain model is serialized to JSON via HttpMessageConverters (Jackson). Unhandled exceptions are intercepted by @ControllerAdvice and @ExceptionHandler to produce structured error responses.",
+      "partial": "The request is processed by DispatcherServlet and @RestController, but Spring Boot cannot convert return values to JSON automatically.",
+      "incorrect": "HTTP requests in Spring Boot bypass the web server and write directly to the hard disk without DispatcherServlet.",
+      "irrelevant": "Black holes are regions of spacetime where gravity is so strong that nothing, including light, can escape from them."
+    }
+  },
+  {
+    "id": "TC-010",
+    "topic": "Declarative Transaction Management",
+    "difficulty": "Very Complex",
+    "question": "Explain how Spring's declarative transaction management works with @Transactional. Discuss transaction boundaries, rollback behavior, propagation, and a common reason why @Transactional may not work as expected.",
+    "reference_answer": "Spring's declarative transaction management allows transaction behavior to be configured using annotations such as @Transactional. In the typical proxy-based setup, Spring creates a proxy around a managed bean and uses a transaction manager to begin, commit, or roll back a transaction when an intercepted method is invoked.\n\nThe transaction boundary is usually defined around the annotated method. By default, Spring rolls back on unchecked exceptions (RuntimeException and Error), but not on checked exceptions. The rollback rules can be customized using attributes such as rollbackFor.\n\nTransaction propagation controls how a method participates in an existing transaction. For example, REQUIRED joins an existing transaction or creates one if none exists, while REQUIRES_NEW suspends an existing transaction and starts a separate one.\n\nA common issue is self-invocation: when one method in a bean calls another @Transactional method on the same object, the call may bypass the Spring proxy, so the transactional advice is not applied. Other causes can include calling a method on an unmanaged object or using an unsuitable transaction manager. Actual behavior depends on the proxy strategy, configuration, and Spring version.",
+    "sample_answers": {
+      "correct": "Spring declarative transactions use AOP proxies around @Transactional beans to manage transaction boundaries. By default, transactions roll back on unchecked exceptions (RuntimeException/Error) unless customized with rollbackFor. Propagation settings (REQUIRED, REQUIRES_NEW) govern transaction joining/creation. A classic pitfall is self-invocation (calling an internal @Transactional method within the same bean), which bypasses the proxy and silently skips transaction management.",
+      "partial": "@Transactional creates transactions around methods and rolls back on all exceptions, and self-invocation works without any proxy limitations.",
+      "incorrect": "@Transactional is an annotation used exclusively to compress JPEG images on disk.",
+      "irrelevant": "The Amazon rainforest is the largest tropical rainforest on Earth, spanning across nine South American nations."
+    }
+  }
+]

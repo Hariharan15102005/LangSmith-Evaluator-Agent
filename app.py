@@ -30,6 +30,7 @@ class VerdictEnum(str, Enum):
     PARTIAL = "PARTIAL"
     FAIL = "FAIL"
 
+#class ErrorStatusEnum(str, Enum):
 
 class ErrorStatusEnum(str, Enum):
     NO_ERROR = "NO ERROR"
